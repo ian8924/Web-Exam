@@ -38,7 +38,7 @@ watch(activeTab, (val) => {
     })
   } else {
     getForYouListApi().then((res) => {
-      console.log(res)
+      currentVideoList.value = res.items
     })
   }
 },
