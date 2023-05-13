@@ -25,6 +25,8 @@
 <script lang="ts" setup>
 import { Ref } from 'vue'
 import { VideoPlayer } from '@videojs-player/vue'
+import '@/assets/scss/video.css'
+
 import { ApiItem, TabOption, TabType, VideoRef } from '~~/types'
 import { getFollowListApi, getForYouListApi } from '@/api/api'
 
@@ -66,7 +68,6 @@ const handleMounted = (payload:any, idx: number) => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/video.css';
 .page-index {
   text-align: center;
   background: #000;
