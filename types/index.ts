@@ -14,6 +14,10 @@ interface ApiResponse {
 }
 
 interface VideoRef {
+    // player : any
+}
+
+interface PlayerRef {
     player : any
 }
 
@@ -27,5 +31,6 @@ export {
   ApiItem,
   ApiResponse,
   VideoRef,
+  PlayerRef,
   TabOption
 }
