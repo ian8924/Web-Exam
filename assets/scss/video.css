@@ -980,7 +980,7 @@ body.vjs-pip-window .video-js {
     display: none;
     width: 100%;
     position: absolute;
-    bottom: 30px;
+    bottom: 10px;
     left: 0;
     right: 0;
     height: 3em;

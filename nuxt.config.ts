@@ -11,10 +11,10 @@ export default defineNuxtConfig({
       {
         hid: 'description',
         name: 'description',
-        content: 'ElementPlus + Nuxt3',
-      },
+        content: 'ElementPlus + Nuxt3'
+      }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // css
@@ -22,17 +22,17 @@ export default defineNuxtConfig({
 
   // build
   build: {
-    transpile: ['element-plus/es'],
+    transpile: ['element-plus/es']
   },
 
   typescript: {
     typeCheck: true,
     strict: true,
-    shim: false,
+    shim: false
   },
 
   vite: {
-    plugins: [ElementPlus()],
+    plugins: [ElementPlus()]
   },
 
   // build modules
@@ -43,14 +43,14 @@ export default defineNuxtConfig({
 
   // vueuse
   vueuse: {
-    ssrHandlers: true,
+    ssrHandlers: true
   },
 
   unocss: {
     uno: true,
     attributify: true,
     icons: {
-      scale: 1.2,
-    },
-  },
+      scale: 1.2
+    }
+  }
 })

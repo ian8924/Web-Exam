@@ -30,12 +30,13 @@ const activeTab = computed({
 <style scoped lang="scss">
   .tabs {
     position: fixed;
-    top: 30px;
+    bottom: 0px;
     width: 100%;
     display: flex;
     justify-content: center;
     z-index: 1000;
     .tab-item {
+      flex: 1;
       font-family: 'Roboto';
       font-style: normal;
       font-weight: 900;
