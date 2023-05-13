@@ -41,6 +41,7 @@ import { Pagination, Mousewheel, Controller } from 'swiper'
 import { SwiperSlide, Swiper } from 'vue-awesome-swiper'
 // icons
 import { Mute, Microphone } from '@element-plus/icons-vue'
+import { ElIcon } from 'element-plus'
 
 import 'swiper/css'
 import 'swiper/css/pagination'

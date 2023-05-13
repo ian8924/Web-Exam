@@ -46,7 +46,7 @@
 <script lang="ts" setup>
 import { VideoPlayer } from '@videojs-player/vue'
 import '@/assets/scss/video.css'
-import { ElSlider } from 'element-plus'
+import { ElSlider, ElIcon } from 'element-plus'
 
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue'
 

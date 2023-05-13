@@ -1,13 +1,15 @@
 import { ApiResponse } from '~~/types'
 
+const HOST_URL = 'http://localhost:3000'
+
 // get follow list api
 const getFollowListApi = (): Promise<ApiResponse> => {
-  return $fetch('http://localhost:3001/following_list')
+  return $fetch(`${HOST_URL}/following_list`)
 }
 
 // get for you list api
 const getForYouListApi = (): Promise<ApiResponse> => {
-  return $fetch('http://localhost:3001/for_you_list')
+  return $fetch(`${HOST_URL}/for_you_list`)
 }
 
 export {
