@@ -11,6 +11,8 @@
         <el-slider
           v-model="sliderTime"
           :max="totalTime"
+          :show-tooltip="false"
+          :debounce="0"
           @change="setSliderTime"
         />
         <div
@@ -32,12 +34,12 @@
     <VideoPlayer
       ref="playerRef"
       class="video-player"
-      :poster=" props.item.cover"
+      :poster="props.item.cover"
       :src="props.item.play_url"
-      :fluid="true"
       :loop="true"
       :volume="0.6"
       :muted="true"
+      :playsinline="false"
       @mounted="handleMounted($event)"
       @timeupdate="onPlayerTimeupdate"
     />
