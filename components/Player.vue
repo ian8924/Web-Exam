@@ -22,6 +22,7 @@
       <el-icon
         v-if="!isPlaying"
         class="play-icon"
+        size="50px"
       >
         <VideoPlay v-if="!isPlaying" />
         <VideoPause v-else />
