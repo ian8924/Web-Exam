@@ -13,8 +13,19 @@ interface ApiResponse {
     items : ApiItem[]
 }
 
+interface VideoRef {
+    player : any
+}
+
+interface TabOption {
+    label : string,
+    value : string
+}
+
 export {
   TabType,
   ApiItem,
-  ApiResponse
+  ApiResponse,
+  VideoRef,
+  TabOption
 }

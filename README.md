@@ -31,17 +31,7 @@ More info about [nuxt deployment](https://v3.nuxtjs.org/docs/deployment/presets)
 
 Run `npm run generate` to generate static html in `.output/public`.
 
-## Production
+## Dependencies
+[Element Plus] (https://v3.nuxtjs.org/docs/deployment/presets)
+[videojs-player-vue] (https://github.com/surmon-china/videojs-player#usage-vue)
 
-Build the application for production:
-
-```bash
-yarn build
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
-
-## Ref
-
-- [vitesse-nuxt3](https://github.com/antfu/vitesse-nuxt3)
-# nuxt3-ts-pinia
