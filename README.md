@@ -1,7 +1,7 @@
 # Video Exam
 ## Setup
 
-Make sure to install the dependencies
+Make sure to install the dependencies 
 
 ```bash
 yarn install
@@ -16,6 +16,8 @@ yarn dev
 ```
 
 ## Dependencies
+
+Node v18.16.0.
 
 [Nuxt 3] (https://v3.nuxtjs.org).
 

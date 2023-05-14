@@ -1,6 +1,6 @@
 import { ApiResponse } from '~~/types'
 
-const HOST_URL = 'http://localhost:3000'
+const HOST_URL = ' http://172.20.10.3:3000'
 
 // get follow list api
 const getFollowListApi = (): Promise<ApiResponse> => {
