@@ -26,8 +26,8 @@
         class="video-area"
       >
         <Player
-          ref="videosRef"
           class="video-player"
+          :video-id="idx"
           :item="item"
           :is-active="idx === activeSwiperIndex"
           :is-muted="isMuted"
@@ -46,9 +46,8 @@ import { ElIcon } from 'element-plus'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Ref } from 'vue'
-import { ApiItem, VideoRef } from '~~/types'
+import { ApiItem } from '~~/types'
 
-const videosRef: Ref<VideoRef[]> = ref([])
 const isMuted: Ref<boolean> = ref(true)
 
 const modules = ref([Pagination, Mousewheel, Controller])

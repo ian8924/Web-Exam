@@ -3,6 +3,7 @@ import ElementPlus from 'unplugin-element-plus/vite'
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+  ssr: false,
   // meta
   meta: {
     title: 'Element Plus + Nuxt 3',

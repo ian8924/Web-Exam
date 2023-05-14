@@ -35,6 +35,7 @@ const activeTab = computed({
     display: flex;
     justify-content: center;
     z-index: 1000;
+    display: none;
     .tab-item {
       flex: 1;
       font-family: 'Roboto';
@@ -43,6 +44,7 @@ const activeTab = computed({
       font-size: 16px;
       padding: 20px;
       color: rgba(255,255,255,0.6);
+      cursor: pointer;
       &.active {
         color: white;
       }
