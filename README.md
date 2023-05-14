@@ -32,6 +32,7 @@ More info about [nuxt deployment](https://v3.nuxtjs.org/docs/deployment/presets)
 Run `npm run generate` to generate static html in `.output/public`.
 
 ## Dependencies
-[Element Plus] (https://v3.nuxtjs.org/docs/deployment/presets)
-[videojs-player-vue] (https://github.com/surmon-china/videojs-player#usage-vue)
+[Element Plus] (https://v3.nuxtjs.org/docs/deployment/presets).
+
+[dplayer] (https://dplayer.diygod.dev/).
 

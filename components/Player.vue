@@ -1,5 +1,8 @@
 <template>
   <div class="player-board">
+    <div class="title">
+      {{ props.item.title }}
+    </div>
     <el-icon
       v-if="!isPlaying"
       size="50px"
@@ -43,7 +46,7 @@ import { Arrayable } from 'element-plus/es/utils/typescript'
 let playerController :any = reactive({})
 
 // 是否第一次播放
-// const isFirstIn: Ref<boolean> = ref(true)
+const isFirstIn: Ref<boolean> = ref(true)
 // 是否播放中
 const isPlaying: Ref<boolean> = ref(false)
 // 影片總時長
@@ -96,7 +99,13 @@ watch(isMuted, (val:boolean) => {
 watch(isActive, (val:boolean) => {
   if (val) {
     // 第一次進入延遲一秒後播放
-    play()
+    if (isFirstIn.value) {
+      setTimeout(() => {
+        play()
+      }, 1000)
+    } else {
+      play()
+    }
   } else {
     pause()
   }
@@ -163,11 +172,20 @@ onMounted(() => {
 .player-board {
   width: 100%;
   position: relative;
+  .title {
+    position: absolute;
+    top: 200px;
+    z-index: 1000;
+    width: 80%;
+    background-color: rgba(255,255,255,.4);
+    text-align: center;
+  }
   .play-icon {
     z-index: 1000;
     position: absolute;
     top: 50%;
     left: 50%;
+    margin-top: 50px;
     transform: translate(-50% , -50%);
     cursor: pointer;
   }
@@ -177,7 +195,7 @@ onMounted(() => {
       padding: 5px;
       background: rgba(0,0,0,.3);
       position: absolute;
-      top: 15px;
+      bottom: 100px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;

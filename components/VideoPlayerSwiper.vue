@@ -92,12 +92,13 @@ const setSlideIndex = (swiper:{ activeIndex : number}) => {
 
 .video-area {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     .video-player {
       width: 100%;
       height: 100%;
+      padding-top: 100px;
     }
 
 }
