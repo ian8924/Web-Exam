@@ -1,7 +1,14 @@
 <template>
   <div class="player-board">
+    <el-icon
+      v-if="!isPlaying"
+      size="50px"
+      class="play-icon"
+      @click="play"
+    >
+      <VideoPlay />
+    </el-icon>
     <div
-      v-if="totalTime"
       class="slider-board"
     >
       <el-slider
@@ -16,12 +23,6 @@
       >
         {{ sliderTime.toFixed(0) }} / {{ totalTime.toFixed(0) }}
       </div>
-      <button @click="play">
-        123312
-      </button>
-      <button @click="pause">
-        pause
-      </button>
     </div>
     <div
       :id="'video'+ videoId"
@@ -33,17 +34,18 @@
 <script lang="ts" setup>
 import Hls from 'hls.js'
 import DPlayer from 'dplayer'
-import { ElSlider } from 'element-plus'
+import { ElSlider, ElIcon } from 'element-plus'
+import { VideoPlay } from '@element-plus/icons-vue'
 
-import { Ref, nextTick } from 'vue'
+import { Ref } from 'vue'
 import { Arrayable } from 'element-plus/es/utils/typescript'
 
-const playerController :any = ref(null)
+let playerController :any = reactive({})
 
 // 是否第一次播放
 // const isFirstIn: Ref<boolean> = ref(true)
 // 是否播放中
-// const isPlaying: Ref<boolean> = ref(false)
+const isPlaying: Ref<boolean> = ref(false)
 // 影片總時長
 const totalTime : Ref<number> = ref(0)
 // 目前時間
@@ -67,38 +69,37 @@ const isActive = computed(() => {
 })
 
 const play = () => {
-  if (playerController.value) {
-    playerController.value.play()
+  if (playerController) {
+    playerController.play()
+    isPlaying.value = true
   }
 }
 
 const pause = () => {
-  if (playerController.value) {
-    playerController.value.pause()
+  if (playerController.video) {
+    playerController.pause()
+    isPlaying.value = false
   }
 }
 
 // 設置拖曳時間
 const setSliderTime = (val: Arrayable<number>) => {
-  playerController.value.seek(val)
+  playerController.seek(val)
 }
 
 watch(isMuted, (val:boolean) => {
   const volume = val ? 0 : 1
-  playerController.value.volume(volume, true, false)
+  playerController.volume(volume, true, false)
 })
 
 // 若是 active 則播放，反之暫停
-watch(isActive, async (val:boolean) => {
+watch(isActive, (val:boolean) => {
   if (val) {
     // 第一次進入延遲一秒後播放
-    await nextTick()
     play()
   } else {
     pause()
   }
-}, {
-  immediate: true
 })
 
 // 設置 slider 時間
@@ -107,28 +108,24 @@ watch(currentTime, (val:number) => {
 })
 
 const initial = () => {
+  // 依照瀏覽器處理 initial
   const issafariBrowser = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
   if (issafariBrowser) {
-    playerController.value = new DPlayer({
+    playerController = new DPlayer({
       container: document.getElementById(`video${props.videoId}`),
       autoplay: true,
+      loop: true,
       video: {
         url: props.item.play_url,
         pic: props.item.cover,
         type: 'hls'
-      // customType: {
-      //   customHls: function (video:any) {
-      //     const hls = new Hls()
-      //     hls.loadSource(video.src)
-      //     hls.attachMedia(video)
-      //   }
-      // }
       }
     })
   } else {
-    playerController.value = new DPlayer({
+    playerController = new DPlayer({
       container: document.getElementById(`video${props.videoId}`),
       autoplay: true,
+      loop: true,
       video: {
         url: props.item.play_url,
         pic: props.item.cover,
@@ -144,9 +141,15 @@ const initial = () => {
     })
   }
 
-  playerController.value.on('timeupdate', function () {
-    totalTime.value = playerController.value.video.duration
-    currentTime.value = playerController.value.video.currentTime
+  playerController.on('timeupdate', function () {
+    totalTime.value = playerController.video.duration
+    currentTime.value = playerController.video.currentTime
+  })
+  playerController.on('pause', function () {
+    isPlaying.value = false
+  })
+  playerController.on('playing', function () {
+    isPlaying.value = true
   })
 }
 
@@ -160,6 +163,14 @@ onMounted(() => {
 .player-board {
   width: 100%;
   position: relative;
+  .play-icon {
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    cursor: pointer;
+  }
   .slider-board {
       z-index: 1;
       width: 80%;
@@ -188,6 +199,6 @@ onMounted(() => {
 
 <style>
 .dplayer-controller {
-  /* display: none !important; */
+  display: none !important;
 }
 </style>
